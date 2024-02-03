@@ -11,7 +11,7 @@
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <div class="testimonial-2">
                         <blockquote class="mb-4">
-                            <p>"{{substr($testimonial->comment, 0, 90)}}"</p>
+                            <p>"{{substr($testimonial->comment, 0, 70)}}"</p>
                         </blockquote>
                         <div class="d-flex v-card align-items-center">
                             <img src="{{asset('assets/images/'.$testimonial->image)}}" alt="Image" class="img-fluid mr-3">

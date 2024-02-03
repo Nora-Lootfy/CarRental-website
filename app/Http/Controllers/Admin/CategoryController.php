@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -83,9 +84,13 @@ class CategoryController extends Controller
      */
     public function destroy(string $id) :RedirectResponse
     {
-        DB::table('categories')
-            ->delete($id);
+        try {
+            DB::table('categories')
+                ->delete($id);
+            return redirect()->route('categories');
+        } catch (QueryException $ex) {
+            return redirect()->route('categories')->with(['error' => 'Cannot delete from Categories due to their are cars in that category.']);
+        }
 
-        return redirect()->route('categories');
     }
 }

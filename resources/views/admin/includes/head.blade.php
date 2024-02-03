@@ -26,4 +26,10 @@
 
     <!-- Custom Theme Style -->
     <link href="{{asset('assets/admin/build/css/custom.min.css')}}" rel="stylesheet">
+
+    @if(session('error'))
+        <script defer>
+            alert("{{ session('error') }}");
+        </script>
+    @endif
 </head>

@@ -34,7 +34,7 @@ Auth::routes(['verify' => true]);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(
-    ['prefix' => 'admin'],
+    ['prefix' => 'admin', 'middleware' => ['verified']],
     function () {
         Route::group(['prefix'=>'users'], function (){
             Route::get('', [UserController::class, 'index'])->name('users');
@@ -78,5 +78,3 @@ Route::group(
         });
     }
 );
-
-
